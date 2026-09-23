@@ -131,6 +131,22 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 .topnav a:hover { color: var(--primary); }
+.topnav a[aria-current="page"] { color: var(--text); }
+
+/* In-page jump links (full list page) */
+.subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.subnav a {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.subnav a:hover { color: var(--primary); }
 
 /* ---------------------------------------------------
    Layout shell
