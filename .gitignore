@@ -1,0 +1,7 @@
+# Windows metadata files that show up when copying files into WSL
+*:Zone.Identifier
+
+# Editor/OS junk
+.vscode/
+.DS_Store
+Thumbs.db

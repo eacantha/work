@@ -1,0 +1,293 @@
+/* ---------------------------------------------------
+   Tokens
+--------------------------------------------------- */
+:root {
+  --bg: #080D18;
+  --surface: #0E1626;
+  --border: #24324A;
+
+  --text: #E8EAF0;
+  --text-muted: #98A4B8;
+
+  --primary: #B8FF3D;   /* acid green — the one bold accent */
+  --secondary: #B65CFF; /* electric violet — courses & labs marker */
+  --tertiary: #FF4F91;  /* hot coral — writing marker */
+  --accent: #3DE8FF;    /* electric cyan — projects marker */
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Work Sans", system-ui, sans-serif;
+
+  --measure: 65ch;
+  --radius: 6px;
+}
+
+/* ---------------------------------------------------
+   Reset & base
+--------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+p { margin: 0 0 1em; }
+
+a {
+  color: var(--text);
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  color: var(--primary);
+  text-decoration-color: var(--primary);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+ul { list-style: none; margin: 0; padding: 0; }
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--primary);
+  color: var(--bg);
+  padding: 0.5em 1em;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* ---------------------------------------------------
+   Signature spectrum bar
+--------------------------------------------------- */
+.spectrum-bar {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--accent),
+    var(--secondary),
+    var(--tertiary)
+  );
+}
+
+/* ---------------------------------------------------
+   Top bar
+--------------------------------------------------- */
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem clamp(1.25rem, 5vw, 3rem);
+  border-bottom: 1px solid var(--border);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.topnav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.topnav a {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.topnav a:hover { color: var(--primary); }
+
+/* ---------------------------------------------------
+   Layout shell
+--------------------------------------------------- */
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+}
+
+/* ---------------------------------------------------
+   Hero
+--------------------------------------------------- */
+.hero {
+  padding: clamp(3rem, 10vw, 6rem) 0 clamp(2.5rem, 6vw, 4rem);
+  max-width: var(--measure);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  color: var(--text);
+}
+
+.hero .role {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+}
+
+.hero .bio {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 52ch;
+}
+
+/* ---------------------------------------------------
+   Content blocks
+--------------------------------------------------- */
+.block {
+  padding: clamp(2rem, 5vw, 3rem) 0;
+  border-top: 1px solid var(--border);
+}
+
+.kicker {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--marker, var(--primary));
+}
+
+.block--paths { --marker: var(--primary); }
+.block--projects { --marker: var(--accent); }
+.block--courses  { --marker: var(--secondary); }
+.block--writing  { --marker: var(--tertiary); }
+
+.entry-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.entry-list--tight { gap: 0.6rem; }
+
+.entry-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.15rem;
+}
+
+.entry h3 {
+  font-size: 1.15rem;
+}
+
+.entry p {
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.entry-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Featured card inside Courses & labs */
+.featured {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.featured h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+.featured p { color: var(--text-muted); margin-bottom: 0; }
+
+.block-note {
+  color: var(--secondary);
+  padding-top: 10px;
+}
+
+.writing-group {
+  margin-bottom: 1.75rem;
+}
+
+.writing-group:last-child { margin-bottom: 0; }
+
+.writing-group h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+/* ---------------------------------------------------
+   Footer
+--------------------------------------------------- */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.25rem, 5vw, 3rem) 3rem;
+  text-align: left;
+}
+
+.footer > p {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  color: var(--text-muted);
+}
+.contact-links a:hover { color: var(--primary); }
+
+/* ---------------------------------------------------
+   Motion & accessibility
+--------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a, button { transition: none; }
+}
+
+/* ---------------------------------------------------
+   Small screens
+--------------------------------------------------- */
+@media (max-width: 480px) {
+  .topbar { padding: 1.25rem 1.25rem; }
+  .topnav { gap: 1rem; }
+}
